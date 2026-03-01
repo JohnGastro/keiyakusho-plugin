@@ -2,9 +2,7 @@
 .DS_Store
 Thumbs.db
 
-# Templates are included in .plugin but excluded from git (49MB, too large)
-# チームへの配布は .plugin ファイル（GitHub Releases）経由
-templates/
+# Templates are tracked in git for GitHub Actions auto-build
 
 # Python
 __pycache__/

@@ -1,0 +1,47 @@
+name: プラグイン自動ビルド&リリース
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: バージョン取得
+        id: version
+        run: |
+          VERSION=$(jq -r '.version' .claude-plugin/plugin.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=v$VERSION-build.${{ github.run_number }}" >> $GITHUB_OUTPUT
+
+      - name: .pluginファイルをビルド
+        run: |
+          zip -r keiyakusho.plugin . \
+            -x ".git/*" \
+            -x ".github/*" \
+            -x ".DS_Store" \
+            -x "*.plugin" \
+            -x ".githooks/*" \
+            -x "__pycache__/*" \
+            -x "*/__pycache__/*" \
+            -x "*/.DS_Store"
+
+      - name: リリース作成&アップロード
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: "keiyakusho v${{ steps.version.outputs.version }} (build #${{ github.run_number }})"
+          body: |
+            ## 自動ビルド
+
+            `keiyakusho.plugin` をダウンロードして、Coworkの「Customize」からアップロードしてください。
+
+            テンプレート（Excelファイル298個）同梱済み。インストール後すぐに使えます。
+          files: keiyakusho.plugin
+          make_latest: true
