@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Templates (Rabinet members only - not redistributable)
+templates/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Package
+*.plugin
