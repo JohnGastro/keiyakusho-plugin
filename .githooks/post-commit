@@ -1,0 +1,12 @@
+#!/bin/bash
+# コミット後に自動でpushする
+# 手動コミットでもClaudeからのコミットでも自動push
+
+# 再帰防止
+if [ "$GIT_AUTO_PUSH_RUNNING" = "1" ]; then
+  exit 0
+fi
+export GIT_AUTO_PUSH_RUNNING=1
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+git push origin "$branch" 2>&1
