@@ -16,13 +16,14 @@ jobs:
       - name: バージョン取得
         id: version
         run: |
-          VERSION=$(jq -r '.version' .claude-plugin/plugin.json)
+          VERSION=$(jq -r '.version' keiyakusho/.claude-plugin/plugin.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "tag=v$VERSION-build.${{ github.run_number }}" >> $GITHUB_OUTPUT
 
       - name: .pluginファイルをビルド
         run: |
-          zip -r keiyakusho.plugin . \
+          cd keiyakusho
+          zip -r ../keiyakusho.plugin . \
             -x ".git/*" \
             -x ".github/*" \
             -x ".DS_Store" \
@@ -43,5 +44,8 @@ jobs:
             `keiyakusho.plugin` をダウンロードして、Coworkの「Customize」からアップロードしてください。
 
             テンプレート（Excelファイル298個）同梱済み。インストール後すぐに使えます。
+
+            ### マーケットプレイスからインストール（推奨）
+            Coworkの「Customize」→「マーケットプレイスを追加」→ `https://github.com/JohnGastro/keiyakusho-plugin` を入力
           files: keiyakusho.plugin
           make_latest: true
