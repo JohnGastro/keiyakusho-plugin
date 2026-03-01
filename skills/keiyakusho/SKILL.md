@@ -72,7 +72,7 @@ version: 0.1.0
 
 ### ステップ5: テンプレートへの流し込み
 
-`scripts/fill_template.py` でExcelテンプレートに自動入力する。`scripts/utils.py` の以下ユーティリティを使用:
+テンプレートは `${CLAUDE_PLUGIN_ROOT}/templates/` に格納されている。`scripts/fill_template.py` でExcelテンプレートに自動入力する。`scripts/utils.py` の以下ユーティリティを使用:
 
 - `DateConverter.to_japanese_format()` — 和暦変換（令和X年X月X日）
 - `CurrencyFormatter.to_format()` — 金額フォーマット
@@ -107,7 +107,7 @@ version: 0.1.0
 
 ### 付帯資料
 
-解説書PDFが `templates/補足資料/` にある:
+解説書PDFが `${CLAUDE_PLUGIN_ROOT}/templates/補足資料/` にある:
 - 91.重要事項説明書補足資料
 - 96.重要事項説明書_売買編_解説書.pdf
 - 97.不動産売買契約書 解説書.pdf

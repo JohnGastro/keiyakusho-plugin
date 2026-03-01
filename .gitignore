@@ -2,7 +2,8 @@
 .DS_Store
 Thumbs.db
 
-# Templates (Rabinet members only - not redistributable)
+# Templates are included in .plugin but excluded from git (49MB, too large)
+# チームへの配布は .plugin ファイル（GitHub Releases）経由
 templates/
 
 # Python
