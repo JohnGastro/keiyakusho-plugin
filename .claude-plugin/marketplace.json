@@ -1,0 +1,13 @@
+{
+  "name": "keiyakusho-plugin",
+  "owner": {
+    "name": "whatshobby"
+  },
+  "plugins": [
+    {
+      "name": "keiyakusho",
+      "source": "./keiyakusho",
+      "description": "全日本不動産協会（ラビーネット）の統一書式に準拠した不動産契約書の作成、不動産調査ガイド、物件フォルダ管理を支援するプラグイン。大分市特化の窓口案内付き。"
+    }
+  ]
+}
